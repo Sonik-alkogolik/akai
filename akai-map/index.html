@@ -366,11 +366,13 @@
 
 
 <div id="information-information" class="container">
+    <div class="overlay"></div>
     <ul class="breadcrumb">
         <li><a href="https://akai.ru/index.php?route=common/home"><i class="fa fa-home"></i></a></li>
         <li><a href="https://akai.ru/index.php?route=information/information&amp;information_id=7">Контакты сервисных центров</a></li>
     </ul>
     <div class="row">
+
         <div id="content" class="col-sm-12">
             <h1 class="page-title">Контакты сервисных центров</h1>
             <button style="display: none;" id="save-coordinates">Получить координаты и сохранить</button>
@@ -380,7 +382,7 @@
             </div>
             <p><span style="font-family:'arial',sans-serif;font-size:12pt">Контакты сервиса (телевизоры AKAI&nbsp;)&nbsp;</span><br></p><div style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: calibri, sans-serif; font-size: 11pt; line-height: 115%; margin: 0cm 0cm 0.0001pt;"><span style="color:#1a1a1a;font-family:'arial',sans-serif;font-size:12pt"><a href="mailto:warranty.AKAI@lyambda.com" rel="noopener noreferrer" target="_blank">warranty.AKAI@lyambda.com</a></span></div><div style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: calibri, sans-serif; font-size: 11pt; line-height: 115%; margin: 0cm 0cm 0.0001pt;"><span style="color:#1a1a1a;font-family:'arial',sans-serif;font-size:12pt">8-800-333-78-27</span></div><p><br></p><p>
         </p><p><b><span style="font-size: 14px;">Сервисные центры:</span></b></p>
-            <div class="city-wrap">
+            <div class="city-wrap first-city-wrap">
                 <div class="city-title">Альметьевск</div>
                 <div class="services-query">
                     <div class="service" data-content="query_item">
@@ -7093,47 +7095,7 @@
 
 
 
-            <style type="text/css">
-                .city-wrap {
-                    background-color: rgba(234, 233, 233, 0.31);
-                    border-radius: 40px;
-                    margin-bottom: 46px;
-                    padding: 40px;
-                    font-size: 20px;
-                    transition: height .35s;
-                    overflow: hidden;
-                }
-
-                .city-title {
-                    font-size: 28px;
-                }
-
-                .services-query {
-                    padding-top: 30px;
-                }
-
-                .service {
-                    border-top: 1px solid #cdcdcd;
-                }
-
-                .service-stack {
-                    padding: 20px 0;
-                }
-
-                .service-attr {
-                    color: #888;
-                    font-size: 14px;
-                    padding-top: 10px;
-                }
-
-                .w-layout-layout {
-                    grid-row-gap: 20px;
-                    grid-column-gap: 20px;
-                    grid-auto-columns: 1fr;
-                    justify-content: center;
-                    padding: 20px;
-                }
-            </style></div>
+         </div>
     </div>
 </div>
 <footer>
@@ -7261,10 +7223,11 @@
 .dropdown-services-city-unique {
   position: relative;
   display: inline-block;
+  z-index: 150;
 }
 
 .dropdown-button-unique {
-  background-color: #4caf50;
+  background-color: #da2128;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -7274,7 +7237,7 @@
 
 .dropdown-button-unique:hover,
 .dropdown-button-unique:focus {
-  background-color: #45a049;
+  background-color: #da2128;
 }
 
 .dropdown-menu-unique {
@@ -7282,7 +7245,7 @@
   position: absolute;
   background-color: white;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 150;
   padding: 10px;
   margin: 0;
   list-style-type: none;
@@ -7304,240 +7267,264 @@
 .dropdown-services-city-unique .dropdown-menu-unique.visible {
   display: block;
 }
+.service-title {
+    padding-left: 0;
+}
 
+.city-wrap {
+    margin-bottom: 46px;
+    padding: 10px 0;
+    font-size: 20px;
+    transition: height .35s;
+    overflow: hidden;
+    flex-wrap: wrap;
+    display: none;
+}
+
+.city-title {
+    font-size: 28px;
+}
+.city-info {
+    width: 25%;
+}
+.services-query {
+    width: 25%;
+}
+.city-info > div.services-query {
+    width: 100%;
+}
+.services-query {
+    padding-top: 30px;
+}
+
+.services-query.service {
+    border-top: 1px solid #cdcdcd;
+}
+.city-wrap.first-city-wrap {
+    display: block;
+}
+
+.service.service-item-flex {
+    display: flex;
+}
+
+.service-stack {
+    padding: 20px 0;
+}
+
+.service-attr {
+    color: #888;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.w-layout-layout {
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    grid-auto-columns: 1fr;
+    justify-content: center;
+    padding: 20px;
+}
 
 </style>
 <style>
     .map-container {
         width: 100%;
-        height: 300px;
+        /* height: 300px; */
         margin-top: 20px;
+       
         border: 1px solid #ccc;
         background: #f9f9f9;
     }
+    .map-container ymaps {
+        padding-bottom: 30px;
+    }
 </style>
+<style>
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 101;
+      display: block; /* Скрыт по умолчанию */
+    }
+  </style>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  // 1. Получаем элементы с классом `.city-wrap`
   const cityWraps = document.querySelectorAll(".city-wrap");
   const dropdownButton = document.querySelector(".dropdown-button-unique");
   const dropdownMenu = document.querySelector(".dropdown-menu-unique");
+  const overlay = document.querySelector(".overlay");
 
   if (!dropdownButton || !dropdownMenu) {
     console.error("Не найдены элементы с уникальными классами.");
     return;
   }
 
-  // 2. Извлекаем уникальные названия городов из `.city-title` внутри `.city-wrap`
   const uniqueCities = Array.from(new Set(
     [...cityWraps].map(cityWrap => cityWrap.querySelector(".city-title")?.textContent.trim())
-  )).filter(Boolean); // Убираем `null` или пустые значения
+  )).filter(Boolean);
 
-  // 3. Проверяем наличие городов
   if (uniqueCities.length === 0) {
     console.warn("Список городов пуст.");
     return;
   }
 
-  // 4. Добавляем кнопку "Показать все" в начало
   const showAllButton = document.createElement("li");
   showAllButton.textContent = "Показать все";
-  showAllButton.dataset.cityTitle = "show-all"; // Специальный атрибут для фильтрации
-  showAllButton.style.fontWeight = "bold"; // Стили для выделения
+  showAllButton.dataset.cityTitle = "show-all";
+  showAllButton.style.fontWeight = "bold";
   dropdownMenu.appendChild(showAllButton);
 
-  // 5. Заполняем выпадающий список городами
   uniqueCities.forEach(city => {
     const li = document.createElement("li");
     li.textContent = city;
-    li.dataset.cityTitle = city; // Указываем атрибут для фильтрации
+    li.dataset.cityTitle = city;
     dropdownMenu.appendChild(li);
   });
 
-  // Перемещаем кнопку "Показать все" в начало
   dropdownMenu.prepend(showAllButton);
 
-  // 6. Обработка клика на кнопке для показа/скрытия списка
   dropdownButton.addEventListener("click", function () {
     dropdownMenu.classList.toggle("visible");
+    overlay.style.display = dropdownMenu.classList.contains("visible") ? "flex" : "none";
   });
 
-  // 7. Фильтрация городов по выбору
   dropdownMenu.addEventListener("click", function (e) {
     if (e.target.tagName === "LI") {
       const selectedCity = e.target.dataset.cityTitle;
 
       if (selectedCity === "show-all") {
-        // Если нажата кнопка "Показать все", отображаем все города
         dropdownButton.textContent = "Выберите город";
-        cityWraps.forEach(cityWrap => (cityWrap.style.display = "block"));
+        cityWraps.forEach(cityWrap => (cityWrap.style.display = "flex"));
       } else {
-        // В противном случае фильтруем города
-        dropdownButton.textContent = selectedCity; // Отображаем выбранный город на кнопке
+        dropdownButton.textContent = selectedCity;
         cityWraps.forEach(cityWrap => {
           const cityTitle = cityWrap.querySelector(".city-title")?.textContent.trim();
           if (cityTitle === selectedCity) {
-            cityWrap.style.display = "block";
+            cityWrap.style.display = "flex";
+            initializeCityMap(cityTitle); // Инициализация карты
           } else {
             cityWrap.style.display = "none";
           }
         });
       }
 
-      dropdownMenu.classList.remove("visible"); // Закрываем список
-    }
-  });
-
-  // 8. Показываем все города при загрузке
-  cityWraps.forEach(cityWrap => (cityWrap.style.display = "block"));
-
-  // 9. Закрытие списка при клике вне его области
-  document.addEventListener("click", function (e) {
-    if (!dropdownMenu.contains(e.target) && !dropdownButton.contains(e.target)) {
       dropdownMenu.classList.remove("visible");
+      overlay.style.display = "none";
     }
   });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-    
-});
+  overlay.addEventListener("click", function () {
+    dropdownMenu.classList.remove("visible");
+    overlay.style.display = "none";
+  });
 
+ // Функция для загрузки карты
+function initializeCityMap(cityName) {
+  fetch('http://127.0.0.1:5500/akai-map/coordinates.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Загруженные данные:', data); // Логируем все данные для отладки
 
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("save-coordinates").addEventListener("click", function () {
-    const cityWraps = document.querySelectorAll(".city-wrap");
+      // Проверяем, что данные для выбранного города существуют
+      if (!data[cityName]) {
+        console.warn(`Нет данных для города: ${cityName}`);
+        return;
+      }
 
-    console.log("Города:", cityWraps); // Для отладки
+      const addressData = data[cityName];
 
-    const cities = [];
-    cityWraps.forEach(cityWrap => {
-      const cityTitle = cityWrap.querySelector(".city-title")?.textContent.trim();
+      // Логируем данные для выбранного города
+      console.log(`Данные для города ${cityName}:`, addressData);
 
-      // Перебираем все возможные адреса
-      const services = cityWrap.querySelectorAll(".services-query > div");
-      services.forEach((service, index) => {
-        const address = service.querySelector("div > div:nth-child(7) > div")?.textContent.trim();
+      // Проверяем, что coordinates является массивом
+      if (!Array.isArray(addressData.coordinates)) {
+        console.error(`Некорректные координаты для города ${cityName}`);
+        return;
+      }
 
-        if (address) {
-          console.log(`Город: ${cityTitle}, Адрес ${index + 1}: ${address}`); // Отладочный вывод
-          if (cityTitle) {
-            cities.push({ city: cityTitle, address: address });
-          }
+      // Ищем блок с нужным городом
+      const cityWrap = Array.from(cityWraps).find(cityWrap =>
+        cityWrap.querySelector(".city-title")?.textContent.trim() === cityName
+      );
+
+      if (!cityWrap) {
+        console.warn(`Блок для города ${cityName} не найден`);
+        return;
+      }
+
+      // Получаем все сервисы для отображения карты
+      const services = cityWrap.querySelectorAll(".services-query");
+
+      services.forEach(service => {
+    // Находим родительский контейнер города
+    const cityWrap = service.closest(".city-wrap");
+
+    // Проверяем, существует ли контейнер карты
+    let mapContainer = cityWrap.querySelector(".map-container");
+    if (!mapContainer) {
+        mapContainer = document.createElement("div");
+        mapContainer.className = "map-container";
+        mapContainer.style.width = "50%"; // Задаем ширину 50%
+        // mapContainer.style.height = "300px";
+        cityWrap.appendChild(mapContainer); // Добавляем контейнер карты в конец city-wrap (справа)
+    }
+
+    // Создаем контейнер для информации, если его нет
+    let cityInfo = cityWrap.querySelector(".city-info");
+    if (!cityInfo) {
+        cityInfo = document.createElement("div");
+        cityInfo.className = "city-info";
+        // cityInfo.style.width = "50%"; // Левая часть
+
+        // Перемещаем city-title внутрь city-info
+        const cityTitle = cityWrap.querySelector(".city-title");
+        if (cityTitle) {
+            cityInfo.appendChild(cityTitle);
         }
-      });
-    });
 
-    if (cities.length === 0) {
-      console.error("Города не найдены");
-      return;
+        // Перемещаем services внутрь city-info
+        cityInfo.appendChild(service);
+
+        // Вставляем city-info перед картой (справа будет карта, слева - текст)
+        cityWrap.prepend(cityInfo);
     }
 
-    const coordinatesData = {};
-    let completedRequests = 0;
-
-    // Инициализация карты для получения координат
-    ymaps.ready(function () {
-      cities.forEach(city => {
-        const geocoder = ymaps.geocode(city.address + ", " + city.city);
-        geocoder.then(function (res) {
-          const coordinates = res.geoObjects.get(0).geometry.getCoordinates();
-          if (!coordinatesData[city.city]) {
-            coordinatesData[city.city] = [];
-          }
-          coordinatesData[city.city].push({
-            address: city.address,
-            coordinates: coordinates
-          });
-          completedRequests++;
-
-          // Если все запросы завершены, сохраняем данные в JSON
-          if (completedRequests === cities.length) {
-            const jsonData = JSON.stringify(coordinatesData, null, 2);
-
-            const blob = new Blob([jsonData], { type: "application/json" });
-            const a = document.createElement("a");
-            a.href = URL.createObjectURL(blob);
-            a.download = "coordinates.json";
-            a.click();
-            URL.revokeObjectURL(a.href);
-          }
-        });
-      });
-    });
-  });
-});
-
-      </script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    fetch('http://127.0.0.1:5500/akai-map/coordinates.json') // Указываем путь к JSON-файлу
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-           // console.log("JSON data loaded:", data); // Логируем данные
-            const cities = document.querySelectorAll(".city-wrap");
-
-            cities.forEach(cityElement => {
-                const cityName = cityElement.querySelector(".city-title")?.textContent.trim();
-               // console.log("Processing city:", cityName);
-
-                const services = cityElement.querySelectorAll(".service");
-
-                if (data[cityName]) {
-                    const addressData = data[cityName]; // Данные для конкретного города
-                   // console.log("Address data for city:", addressData);
-
-                    services.forEach(service => {
-                        // Проверяем и добавляем div с классом map-container
-                        let mapContainer = service.querySelector(".map-container");
-                        if (!mapContainer) {
-                            mapContainer = document.createElement("div");
-                            mapContainer.className = "map-container";
-                            mapContainer.style.width = "100%";
-                            mapContainer.style.height = "300px"; // Указываем размеры карты
-                            service.appendChild(mapContainer); // Добавляем контейнер в конец блока
-                        }
-
-                        // Инициализация карты
-                        ymaps.ready(() => {
-                            try {
-                                const map = new ymaps.Map(mapContainer, {
-                                    center: addressData.coordinates,
-                                    zoom: 16,
-                                    controls: ["zoomControl", "fullscreenControl"]
-                                });
-
-                                const placemark = new ymaps.Placemark(
-                                    addressData.coordinates,
-                                    { hintContent: addressData.address },
-                                    { preset: "islands#icon", iconColor: "#ff0000" }
-                                );
-
-                                map.geoObjects.add(placemark);
-                               // console.log("Map initialized for:", addressData.address);
-                            } catch (error) {
-                                //console.error("Error initializing map:", error);
-                            }
-                        });
-                    });
-                } else {
-                   // console.warn("No data for city:", cityName);
-                }
+    // Инициализируем карту
+    ymaps.ready(() => {
+        try {
+            const map = new ymaps.Map(mapContainer, {
+                center: addressData.coordinates,
+                zoom: 16,
+                controls: ["zoomControl", "fullscreenControl"]
             });
-        })
-        .catch(error => console.error("Ошибка загрузки JSON:", error));
+
+            // Добавляем метку на карту
+            const placemark = new ymaps.Placemark(
+                addressData.coordinates,
+                { hintContent: addressData.address },
+                { preset: "islands#icon", iconColor: "#ff0000" }
+            );
+            map.geoObjects.add(placemark);
+        } catch (error) {
+            console.error("Ошибка при инициализации карты:", error);
+        }
+    });
 });
+    })
+    .catch(error => console.error("Ошибка загрузки JSON:", error));
+}
 
-
+});
 </script>
     
 <!--
