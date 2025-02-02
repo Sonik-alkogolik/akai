@@ -382,7 +382,7 @@
             </div>
             <p><span style="font-family:'arial',sans-serif;font-size:12pt">Контакты сервиса (телевизоры AKAI&nbsp;)&nbsp;</span><br></p><div style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: calibri, sans-serif; font-size: 11pt; line-height: 115%; margin: 0cm 0cm 0.0001pt;"><span style="color:#1a1a1a;font-family:'arial',sans-serif;font-size:12pt"><a href="mailto:warranty.AKAI@lyambda.com" rel="noopener noreferrer" target="_blank">warranty.AKAI@lyambda.com</a></span></div><div style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: calibri, sans-serif; font-size: 11pt; line-height: 115%; margin: 0cm 0cm 0.0001pt;"><span style="color:#1a1a1a;font-family:'arial',sans-serif;font-size:12pt">8-800-333-78-27</span></div><p><br></p><p>
         </p><p><b><span style="font-size: 14px;">Сервисные центры:</span></b></p>
-            <div class="city-wrap first-city-wrap">
+            <div class="city-wrap">
                 <div class="city-title">Альметьевск</div>
                 <div class="services-query">
                     <div class="service" data-content="query_item">
@@ -7219,139 +7219,331 @@
     </div>
 </footer>
 <style>
-/* Стили для уникального выпадающего списка */
-.dropdown-services-city-unique {
-  position: relative;
-  display: inline-block;
-  z-index: 150;
-}
-
-.dropdown-button-unique {
-  background-color: #da2128;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.dropdown-button-unique:hover,
-.dropdown-button-unique:focus {
-  background-color: #da2128;
-}
-
-.dropdown-menu-unique {
-  display: none;
-  position: absolute;
-  background-color: white;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 150;
-  padding: 10px;
-  margin: 0;
-  list-style-type: none;
-  width: 200px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.dropdown-menu-unique li {
-  padding: 8px 10px;
-  cursor: pointer;
-}
-
-.dropdown-menu-unique li:hover {
-  background-color: #ddd;
-}
-
-/* Показать список при клике */
-.dropdown-services-city-unique .dropdown-menu-unique.visible {
-  display: block;
-}
-.service-title {
-    padding-left: 0;
-}
-
-.city-wrap {
-    margin-bottom: 46px;
-    padding: 10px 0;
-    font-size: 20px;
-    transition: height .35s;
-    overflow: hidden;
-    flex-wrap: wrap;
+    /* Стили для уникального выпадающего списка */
+    .dropdown-services-city-unique {
+      position: relative;
+      display: inline-block;
+      z-index: 150;
+      margin-bottom: 20px;
+    }
+    
+    .dropdown-button-unique {
+      background-color: #da2128;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .dropdown-button-unique:hover,
+    .dropdown-button-unique:focus {
+      background-color: #da2128;
+    }
+    
+    .dropdown-menu-unique {
     display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 150;
+    padding: 10px;
+    margin: 0;
+    list-style-type: none;
+    width: 290px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 10px;
 }
 
-.city-title {
-    font-size: 28px;
+/* Стилизация полосы прокрутки */
+.dropdown-menu-unique::-webkit-scrollbar {
+    width: 6px; /* Ширина полосы прокрутки */
 }
-.city-info {
-    width: 25%;
+
+/* Стилизация фона полосы прокрутки */
+.dropdown-menu-unique::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Цвет фона полосы прокрутки */
 }
-.services-query {
-    width: 25%;
+
+/* Стилизация самой полосы */
+.dropdown-menu-unique::-webkit-scrollbar-thumb {
+    background-color: #888; /* Цвет самой полосы */
+    border-radius: 10px; /* Закругление углов полосы */
 }
-.city-info > div.services-query {
+
+/* Стилизация полосы при наведении */
+.dropdown-menu-unique::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Цвет полосы при наведении */
+}
+    
+    .dropdown-menu-unique li {
+      padding: 8px 10px;
+      cursor: pointer;
+      color: #000;
+    display: block;
+    padding: 5px 0;
+    white-space: nowrap;
+    font-size: 13px;
+    }
+    
+    .dropdown-menu-unique li:hover {
+      background-color: #ddd;
+    }
+    
+    /* Показать список при клике */
+    .dropdown-services-city-unique .dropdown-menu-unique.visible {
+      display: block;
+    }
+    .service-title {
+        padding-left: 0;
+    }
+    
+    .city-wrap {
+        margin-bottom: 46px;
+        padding: 10px 0;
+        font-size: 20px;
+        transition: height .35s;
+        overflow: hidden;
+        flex-wrap: wrap;
+        display: none;
+    }
+    
+    .city-title {
+        font-size: 28px;
+    }
+    .city-info {
+        width: 49%;
+    }
+    .services-query {
+        width: 100%;
+    }
+    .city-info > div.services-query {
+        width: 100%;
+    }
+    .services-query {
+        padding-top: 30px;
+    }
+    
+    .services-query.service {
+        border-top: 1px solid #cdcdcd;
+    }
+    /* .city-wrap.first-city-wrap {
+        display: block;
+    } */
+    
+    .service.service-item-flex {
+        display: flex;
+    }
+    
+    .service-stack {
+        padding: 20px 0;
+    }
+    
+    .service-attr {
+        color: #888;
+        font-size: 14px;
+        padding-top: 10px;
+    }
+    
+    .w-layout-layout {
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+        grid-auto-columns: 1fr;
+        justify-content: center;
+        padding: 20px;
+        padding-left: 0;
+    }
+    .map-container-wrapp {
+        width: 49%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+        .map-container {
+            width: 100%;
+            height: 460px;
+            /* margin-top: 20px; */
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+        @media (min-width: 1200px) {
+    .map-container {
+        height: 700px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .map-container  {
+        height: 800px;
+    }
+}
+
+        
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          z-index: 101;
+          display: block; /* Скрыт по умолчанию */
+        }
+        .toggle-buttons {
+            display: none;
+        }
+    
+    .btn-top-wrapper {
+        width: 100%;
+        padding: 20px;
+        padding-left: 0px;
+        display: none;
+        justify-content: flex-start;
+    }
+    .btn-top-wrapper button {
+        background-color: #da2128;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .btn-top-wrapper button:nth-child(2) {
+        margin-left: 20px;
+    }
+    
+    
+    @media (max-width: 768px) {
+        .city-info {
     width: 100%;
 }
-.services-query {
-    padding-top: 30px;
-}
-
-.services-query.service {
-    border-top: 1px solid #cdcdcd;
-}
-.city-wrap.first-city-wrap {
-    display: block;
-}
-
-.service.service-item-flex {
-    display: flex;
-}
-
-.service-stack {
-    padding: 20px 0;
-}
-
-.service-attr {
-    color: #888;
-    font-size: 14px;
-    padding-top: 10px;
-}
-
-.w-layout-layout {
-    grid-row-gap: 20px;
-    grid-column-gap: 20px;
-    grid-auto-columns: 1fr;
-    justify-content: center;
-    padding: 20px;
-}
-
-</style>
-<style>
-    .map-container {
+        .btn-top-wrapper {
+            display: flex;
+        }
+      .toggle-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+    
+      .btn-toggle {
+        padding: 8px 15px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        background: #ddd;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+    
+      .btn-toggle.active {
+        background: #007bff;
+        color: #fff;
+      }
+    
+      .map-container-wrapp {
+        display: none;
         width: 100%;
-        /* height: 300px; */
+        height: 100%;
         margin-top: 20px;
-       
-        border: 1px solid #ccc;
-        background: #f9f9f9;
+      }
     }
-    .map-container ymaps {
-        padding-bottom: 30px;
-    }
-</style>
-<style>
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 101;
-      display: block; /* Скрыт по умолчанию */
-    }
-  </style>
+    
+    </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("save-coordinates").addEventListener("click", function() {
+        const cityWraps = document.querySelectorAll(".city-wrap");
+        const cities = [];
+        const coordinatesData = {};
+        let completedRequests = 0;
+        let totalRequests = 0;
+
+        cityWraps.forEach(cityWrap => {
+            const cityTitle = cityWrap.querySelector(".city-title")?.textContent.trim();
+            const addresses = [];
+
+            cityWrap.querySelectorAll(".services-query").forEach(service => {
+                service.querySelectorAll(".w-layout-cell").forEach((cell, index, cells) => {
+                    if (cell.textContent.trim() === "Адрес:" && cells[index + 1]) {
+                        const address = cells[index + 1].textContent.trim();
+                        if (address && !addresses.includes(address)) {
+                            addresses.push(address);
+                        }
+                    }
+                });
+            });
+
+            if (cityTitle && addresses.length > 0) {
+                cities.push({ city: cityTitle, addresses: addresses });
+                coordinatesData[cityTitle] = { addresses: [] };
+                totalRequests += addresses.length;
+            }
+        });
+
+        console.log("Собранные города и адреса:", JSON.stringify(cities, null, 2));
+
+        // Если нет данных — не продолжаем
+        if (cities.length === 0) return;
+
+        // Функция для геокодирования адресов
+        function geocodeAddress(city, address) {
+            ymaps.geocode(address + ", " + city).then(function (res) {
+                const coordinates = res.geoObjects.get(0)?.geometry.getCoordinates();
+
+                if (!coordinates) {
+                    console.error(`Не удалось найти координаты для ${city}, адрес: ${address}`);
+                } else {
+                    coordinatesData[city].addresses.push({
+                        address: address,
+                        coordinates: coordinates
+                    });
+                }
+
+                completedRequests++;
+                if (completedRequests === totalRequests) {
+                    saveCoordinatesToFile();
+                }
+            }).catch(function (error) {
+                console.error(`Ошибка геокодирования для ${city}, адрес: ${address}`, error);
+                completedRequests++;
+                if (completedRequests === totalRequests) {
+                    saveCoordinatesToFile();
+                }
+            });
+        }
+
+        // Начинаем геокодирование
+        ymaps.ready(function () {
+            cities.forEach(cityObj => {
+                cityObj.addresses.forEach(address => {
+                    geocodeAddress(cityObj.city, address);
+                });
+            });
+        });
+
+        // Функция для сохранения JSON-файла
+        function saveCoordinatesToFile() {
+            const jsonData = JSON.stringify(coordinatesData, null, 2);
+            const blob = new Blob([jsonData], { type: "application/json" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "coordinates.json";
+            a.click();
+            URL.revokeObjectURL(a.href);
+            console.log("Файл coordinates.json сохранен!");
+        }
+    });
+});
+</script>
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const cityWraps = document.querySelectorAll(".city-wrap");
@@ -7379,6 +7571,102 @@ document.addEventListener("DOMContentLoaded", function () {
   showAllButton.style.fontWeight = "bold";
   dropdownMenu.appendChild(showAllButton);
 
+  function initializeButtons() {
+    console.log("🔄 Инициализация кнопок...");
+
+    // Ищем активный .city-wrap
+    const cityWrap = document.querySelector(".city-wrap[style*='display: flex']");
+    if (!cityWrap) {
+        console.warn("🚨 Не найден активный .city-wrap!");
+        return;
+    }
+
+    // Проверяем, есть ли .city-info, если нет – создаем
+    let cityInfo = cityWrap.querySelector(".city-info");
+    if (!cityInfo) {
+        cityInfo = document.createElement("div");
+        cityInfo.classList.add("city-info");
+        
+        // Перемещаем city-title внутрь city-info
+        const cityTitle = cityWrap.querySelector(".city-title");
+        if (cityTitle) {
+            cityInfo.appendChild(cityTitle);
+        }
+
+        // Вставляем city-info в начало .city-wrap
+        cityWrap.prepend(cityInfo);
+    }
+
+    // Перемещаем все .services-query внутрь city-info
+    const servicesQueries = cityWrap.querySelectorAll(".services-query"); // Изменяем на querySelectorAll
+    servicesQueries.forEach(servicesQuery => {
+        if (servicesQuery && !cityInfo.contains(servicesQuery)) {
+            cityInfo.appendChild(servicesQuery);
+        }
+    });
+
+    // Проверяем, есть ли .map-container-wrapp, если нет – создаем
+    let mapContainerWrapp = cityWrap.querySelector(".map-container-wrapp");
+    if (!mapContainerWrapp) {
+        mapContainerWrapp = document.createElement("div");
+        mapContainerWrapp.classList.add("map-container-wrapp");
+
+        // Перемещаем все .map-container внутрь .map-container-wrapp
+        cityWrap.querySelectorAll(".map-container").forEach(container => {
+            mapContainerWrapp.appendChild(container);
+        });
+
+        // Вставляем .map-container-wrapp в конец .city-wrap
+        cityWrap.appendChild(mapContainerWrapp);
+    }
+
+    // Проверяем, есть ли кнопки
+    let btnWrapper = cityInfo.querySelector(".btn-top-wrapper");
+    if (!btnWrapper) {
+        console.log("➕ Добавляем кнопки в .city-info...");
+
+        // Создаем контейнер для кнопок
+        btnWrapper = document.createElement("div");
+        btnWrapper.classList.add("btn-top-wrapper");
+
+        // Создаем кнопки
+        const btnAddresses = document.createElement("button");
+        btnAddresses.classList.add("btn-addresses");
+        btnAddresses.textContent = "Адреса";
+
+        const btnMap = document.createElement("button");
+        btnMap.classList.add("btn-map");
+        btnMap.textContent = "Карта";
+
+        // Вставляем кнопки в контейнер
+        btnWrapper.appendChild(btnAddresses);
+        btnWrapper.appendChild(btnMap);
+
+        // Вставляем кнопки в начало .city-info
+        cityInfo.prepend(btnWrapper);
+
+        console.log("✅ Кнопки добавлены!");
+    }
+
+    // Назначаем обработчики событий
+    btnWrapper.querySelector(".btn-addresses").addEventListener("click", () => {
+        console.log("👆 Клик по 'Адреса'");
+        servicesQueries.forEach(servicesQuery => {
+            servicesQuery.style.display = "block"; // Показываем блоки с услугами
+        });
+        mapContainerWrapp.style.display = "none"; // Скрываем карту
+    });
+
+    btnWrapper.querySelector(".btn-map").addEventListener("click", () => {
+        console.log("👆 Клик по 'Карта'");
+        servicesQueries.forEach(servicesQuery => {
+            servicesQuery.style.display = "none"; // Скрываем блоки с услугами
+        });
+        mapContainerWrapp.style.display = "block"; // Показываем карту
+    });
+}
+
+
   uniqueCities.forEach(city => {
     const li = document.createElement("li");
     li.textContent = city;
@@ -7405,6 +7693,9 @@ document.addEventListener("DOMContentLoaded", function () {
         cityWraps.forEach(cityWrap => {
           const cityTitle = cityWrap.querySelector(".city-title")?.textContent.trim();
           if (cityTitle === selectedCity) {
+            setTimeout(() => {
+            initializeButtons(); // Запускаем инициализацию кнопок после смены города
+            }, 500);
             cityWrap.style.display = "flex";
             initializeCityMap(cityTitle); // Инициализация карты
           } else {
@@ -7418,111 +7709,75 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  overlay.addEventListener("click", function () {
-    dropdownMenu.classList.remove("visible");
-    overlay.style.display = "none";
-  });
+  function initializeCityMap(cityName) {
+    fetch('http://127.0.0.1:5500/akai-map/coordinates.json')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Загруженные данные:', data);
 
- // Функция для загрузки карты
-function initializeCityMap(cityName) {
-  fetch('http://127.0.0.1:5500/akai-map/coordinates.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Загруженные данные:', data); // Логируем все данные для отладки
+            if (!data[cityName]) {
+                console.warn(`Нет данных для города: ${cityName}`);
+                return;
+            }
 
-      // Проверяем, что данные для выбранного города существуют
-      if (!data[cityName]) {
-        console.warn(`Нет данных для города: ${cityName}`);
-        return;
-      }
+            const addresses = data[cityName].addresses;
+            if (!Array.isArray(addresses) || addresses.length === 0) {
+                console.error(`Нет корректных адресов для города ${cityName}`);
+                return;
+            }
 
-      const addressData = data[cityName];
-
-      // Логируем данные для выбранного города
-      console.log(`Данные для города ${cityName}:`, addressData);
-
-      // Проверяем, что coordinates является массивом
-      if (!Array.isArray(addressData.coordinates)) {
-        console.error(`Некорректные координаты для города ${cityName}`);
-        return;
-      }
-
-      // Ищем блок с нужным городом
-      const cityWrap = Array.from(cityWraps).find(cityWrap =>
-        cityWrap.querySelector(".city-title")?.textContent.trim() === cityName
-      );
-
-      if (!cityWrap) {
-        console.warn(`Блок для города ${cityName} не найден`);
-        return;
-      }
-
-      // Получаем все сервисы для отображения карты
-      const services = cityWrap.querySelectorAll(".services-query");
-
-      services.forEach(service => {
-    // Находим родительский контейнер города
-    const cityWrap = service.closest(".city-wrap");
-
-    // Проверяем, существует ли контейнер карты
-    let mapContainer = cityWrap.querySelector(".map-container");
-    if (!mapContainer) {
-        mapContainer = document.createElement("div");
-        mapContainer.className = "map-container";
-        mapContainer.style.width = "50%"; // Задаем ширину 50%
-        // mapContainer.style.height = "300px";
-        cityWrap.appendChild(mapContainer); // Добавляем контейнер карты в конец city-wrap (справа)
-    }
-
-    // Создаем контейнер для информации, если его нет
-    let cityInfo = cityWrap.querySelector(".city-info");
-    if (!cityInfo) {
-        cityInfo = document.createElement("div");
-        cityInfo.className = "city-info";
-        // cityInfo.style.width = "50%"; // Левая часть
-
-        // Перемещаем city-title внутрь city-info
-        const cityTitle = cityWrap.querySelector(".city-title");
-        if (cityTitle) {
-            cityInfo.appendChild(cityTitle);
-        }
-
-        // Перемещаем services внутрь city-info
-        cityInfo.appendChild(service);
-
-        // Вставляем city-info перед картой (справа будет карта, слева - текст)
-        cityWrap.prepend(cityInfo);
-    }
-
-    // Инициализируем карту
-    ymaps.ready(() => {
-        try {
-            const map = new ymaps.Map(mapContainer, {
-                center: addressData.coordinates,
-                zoom: 16,
-                controls: ["zoomControl", "fullscreenControl"]
-            });
-
-            // Добавляем метку на карту
-            const placemark = new ymaps.Placemark(
-                addressData.coordinates,
-                { hintContent: addressData.address },
-                { preset: "islands#icon", iconColor: "#ff0000" }
+            // Ищем контейнер города
+            const cityWrap = Array.from(document.querySelectorAll(".city-wrap")).find(cityWrap =>
+                cityWrap.querySelector(".city-title")?.textContent.trim() === cityName
             );
-            map.geoObjects.add(placemark);
-        } catch (error) {
-            console.error("Ошибка при инициализации карты:", error);
-        }
-    });
-});
-    })
-    .catch(error => console.error("Ошибка загрузки JSON:", error));
+
+            if (!cityWrap) {
+                console.warn(`Блок для города ${cityName} не найден`);
+                return;
+            }
+
+            // Проверяем и создаём контейнер карты
+            let mapContainer = cityWrap.querySelector(".map-container");
+            if (!mapContainer) {
+                mapContainer = document.createElement("div");
+                mapContainer.className = "map-container";
+                mapContainer.style.width = "100%";
+                // mapContainer.style.height = "300px"; 
+                cityWrap.appendChild(mapContainer);
+            } else {
+                mapContainer.innerHTML = ""; // Очищаем старую карту перед созданием новой
+            }
+
+            // Определяем центр карты (по первой координате)
+            const center = addresses[0].coordinates;
+
+            // Инициализируем карту
+            ymaps.ready(() => {
+                try {
+                    const map = new ymaps.Map(mapContainer, {
+                        center: center,
+                        zoom: 14,
+                        controls: ["zoomControl", "fullscreenControl"]
+                    });
+
+                    // Добавляем все метки на карту
+                    addresses.forEach(({ address, coordinates }) => {
+                        const placemark = new ymaps.Placemark(
+                            coordinates,
+                            { hintContent: address },
+                            { preset: "islands#icon", iconColor: "#ff0000" }
+                        );
+                        map.geoObjects.add(placemark);
+                    });
+
+                } catch (error) {
+                    console.error("Ошибка при инициализации карты:", error);
+                }
+            });
+        })
+        .catch(error => console.error("Ошибка загрузки JSON:", error));
 }
+
 
 });
 </script>
